@@ -1,10 +1,14 @@
 import Button from "./Button";
+import { Link } from "react-router-dom";
 
 export default function TopBar() {
   return (
-    <form>
-      <div className="grid grid-rows-1 grid-flow-col gap-2 p-4 mt-4">
-        <div><Button displayString="Create Dvd" /></div>
+   
+      <div className="grid grid-rows-1 grid-flow-col gap-2 p-2 mt-4">
+        <div><Link to="/createDvd"><Button displayString="Create Dvd"/></Link></div>        
+        
+        <form>
+        <div className="grid grid-rows-1 grid-flow-col gap-2">
         <div><Button displayString="Search" /></div>
         {/* Search Options */}
         <div>        
@@ -29,8 +33,9 @@ export default function TopBar() {
           placeholder="Search Term"
           required
         />
+        </div>  
         </div>
-      </div>
-    </form>
+    </form>   
+    </div>
   );
 }

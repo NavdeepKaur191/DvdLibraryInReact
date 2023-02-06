@@ -1,59 +1,49 @@
-import { useParams, useNavigate } from "react-router-dom"
-import { useEffect,useState } from "react";
+import {useNavigate} from 'react-router-dom';
+import Button from './Button';
+import {useState} from 'react';
 import {Link} from 'react-router-dom';
-import Button from "./Button";
-
-export default function EditDvd()
-{   
-    const {dvdId}=useParams();
-    const navigate=useNavigate();
+export default function CreateDvd()
+{
     const url="http://dvd-library.us-east-1.elasticbeanstalk.com/";
+    const [dvd,setDvd]=useState({});
+    
+    const navigate = useNavigate();
     const inputStyle="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-full";
     const labelStyle="block md:text-right mb-1 md:mb-0 pr-4";
+    
 
-    const [dvd,setDvd]=useState({});
-
-    useEffect(()=>{getDvdForEditing(dvdId)},[]);
-
-    async function getDvdForEditing(dvdId)
+    function handleChange(event)
     {
-     const response=await fetch(url+"/dvd/"+dvdId);
-     const data= await response.json();
-     console.log("data "+JSON.stringify(data));
-     setDvd(data);
-     console.log(dvd);
+        const {name, value} = event.target
+        setDvd((prevDvd)=>({
+            ...prevDvd,
+            [name]:value
+        }));
+        // setFormData(prevFormData => ({
+        //     ...prevFormData,
+        //     [name]: type === "checkbox" ? checked : value
+        // }))
+
+
     }
 
-    function handleChange(e)
+    async function handleCreateDvd(event)
     {
-        setDvd(prevState=>({
-            ...prevState,
-            [e.target.name] : e.target.value
-        })
-        )
-    }
-
-    async function editDvd(e)
-    {
-        e.preventDefault();
-        console.log("editUrl : "+url+"dvd/"+dvdId);
-        await fetch(url+"dvd/"+dvdId,{
-            method:"PUT",
+        event.preventDefault();
+        await fetch(url+"dvd", {
+            method: "POST",
             headers: {              
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(dvd)
-        })
-        console.log(e.target.value);
-        navigate("/");
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(dvd),
+          });
+          navigate("/");
     }
-    return(
-        <>       
-        <div className="p-8">
-        <h1 className='text-2xl mb-4 font-bold text-green-700'>Edit Dvd : {dvd.title}</h1>
+    return(<div className="p-8">
+        <h1 className='text-2xl mb-4 font-bold text-green-700'>Create Dvd</h1>
         <hr/>
 
-<form className="w-full max-w-xl mt-4 text-lg" onSubmit={(e)=>editDvd(e)}>
+<form className="w-full max-w-xl mt-4 text-lg" onSubmit={(e) => handleCreateDvd(e)}>
   <div className="md:flex md:items-center mb-6">
     <div className="md:w-2/4">
       <label className={labelStyle} htmlFor="title">
@@ -119,6 +109,7 @@ export default function EditDvd()
           onChange={handleChange}
           className=" text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         >
+          <option value="">Select Rating </option>
           <option value="G">G </option>
           <option value="PG">PG</option>
           <option value="R">R</option>
@@ -157,6 +148,5 @@ export default function EditDvd()
 
 </form>    
     </div>
-    </>
     );
 }

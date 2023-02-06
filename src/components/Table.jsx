@@ -36,7 +36,7 @@ export default function Table({dvds,handleDelete})
               {dvd.director} 
             </td>
             <td className="px-6 py-4">{dvd.rating}</td>
-            <td className="px-6 py-4"><Link to="">Edit </Link> |<button onClick={()=>handleDelete(dvd.id)}> Delete </button></td>
+            <td className="px-6 py-4"><Link to={`editDvd/${dvdId}`}>Edit </Link> |<button onClick={()=>handleDelete(dvd.id)}> Delete </button></td>
           </tr>
         )})}
         </tbody>
