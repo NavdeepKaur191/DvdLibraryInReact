@@ -1,14 +1,13 @@
 import React from "react";
+import { API_BASE_URL} from "./config/config"
 
 export default function DeleteConfirmationModal({
   setOpenModal,
   dvdId,
   getDvdsData,
-}) {
-  const url = "http://dvd-library.us-east-1.elasticbeanstalk.com/";
+}) {  
   async function deleteDvd() {
-    console.log(url + "dvd/" + dvdId);
-    await fetch(url + "dvd/" + dvdId, {
+    await fetch(API_BASE_URL + "/dvd/" + dvdId, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

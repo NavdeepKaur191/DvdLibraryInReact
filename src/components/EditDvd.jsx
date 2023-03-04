@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "./Button";
 import ValidateInputs from "./utils/ValidateInputs";
+import { API_BASE_URL} from "./config/config"
 
 export default function EditDvd() {
   const { dvdId } = useParams();
   const navigate = useNavigate();
-  const url = "http://dvd-library.us-east-1.elasticbeanstalk.com/";
   const inputStyle =
     "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 w-full";
   const labelStyle =
@@ -20,7 +20,7 @@ export default function EditDvd() {
   }, []);
 
   async function getDvdForEditing(dvdId) {
-    const response = await fetch(url + "/dvd/" + dvdId);
+    const response = await fetch(API_BASE_URL + "/dvd/" + dvdId);
     const data = await response.json();
     console.log("data " + JSON.stringify(data));
     setDvd(data);
@@ -39,7 +39,7 @@ export default function EditDvd() {
     const errorMessages=ValidateInputs(dvd);  
     if (Object.keys(errorMessages).length === 0) {
       // submit the form data
-      await fetch(url + "dvd/" + dvdId, {
+      await fetch(API_BASE_URL + "/dvd/" + dvdId, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

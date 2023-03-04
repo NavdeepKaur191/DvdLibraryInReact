@@ -3,8 +3,8 @@ import Button from "./Button";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import ValidateInputs from "./utils/ValidateInputs";
+import { API_BASE_URL} from "./config/config"
 export default function CreateDvd() {
-  const url = "http://dvd-library.us-east-1.elasticbeanstalk.com/";
   const [dvd, setDvd] = useState({
     title: "",
     releaseYear: "",
@@ -38,7 +38,7 @@ export default function CreateDvd() {
     const errorMessages=ValidateInputs(dvd);  
     if (Object.keys(errorMessages).length === 0) {
       // submit the form data
-      await fetch(url + "dvd", {
+      await fetch(API_BASE_URL + "/dvd", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

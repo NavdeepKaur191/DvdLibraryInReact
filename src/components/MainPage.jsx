@@ -2,9 +2,9 @@ import Table from "./Table";
 import TopBar from "./TopBar";
 import { useEffect, useState } from "react";
 import DeleteConfirmationModal from "./DeleteConfirmationModal";
+import { API_BASE_URL} from "./config/config"
 
-export default function MainPage() {
-  const url = "http://dvd-library.us-east-1.elasticbeanstalk.com/";
+export default function MainPage() {  
   const [dvds, setDvds] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   // const [confirmDelete,setConfirmDelete]=useState(false);
@@ -14,7 +14,7 @@ export default function MainPage() {
   }, []);
 
   async function getDvdsData() {
-    const response = await fetch(url + "dvds");
+    const response = await fetch(API_BASE_URL + "/dvds");
     const data = await response.json();
     setDvds(data);
   }
