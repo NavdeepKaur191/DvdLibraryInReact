@@ -1,9 +1,5 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
 In the project directory, you can run:
 
 ### `npm start`
@@ -11,60 +7,95 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# DvdLibrary Project
 
-### `npm test`
+There is list of Dvds on HomePage, inclusing CRUD functionality and also search feature to search by title, directorName, rating, releaseYear.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The glimpse of project is as follows:
 
-### `npm run build`
+<p>
+    <img src="/src/Screenshots/HomePage.JPG" />
+</p>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<hr/>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+ For Creating a new Dvd Record
+ 
+<p>
+    <img src="/src/Screenshots/CreateDvd.JPG" height="500" />
+</p>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<hr/>
 
-### `npm run eject`
+Validations on Create Dvd Record
+ 
+<p>
+    <img src="/src/Screenshots/CreatePageValidation.JPG" />
+</p>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<hr/>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+For editing a Dvd Record
+ 
+<p>
+    <img src="/src/Screenshots/EditPage.JPG" height="500"/>
+</p>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<hr/>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Validations on Create Dvd Record
+ 
+<p>
+    <img src="/src/Screenshots/EditPageValidation.JPG" />
+</p>
 
-## Learn More
+<hr/>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Confirmation modal deleting Dvd Record
+ 
+<p>
+    <img src="/src/Screenshots/DeleteConfirmation.JPG.JPG"  />
+</p>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<hr/>
 
-### Code Splitting
+Search By Title
+ 
+<p>
+    <img src="/src/Screenshots/SearchByTitle.JPG" />
+</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<hr/>
 
-### Analyzing the Bundle Size
+Search By Release Year
+ 
+<p>
+    <img src="/src/Screenshots/SearchByYear.JPG"  />
+</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<hr/>
 
-### Making a Progressive Web App
+Search By Director
+ 
+<p>
+    <img src="/src/Screenshots/SearchByDirector.JPG"  />
+</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<hr/>
 
-### Advanced Configuration
+Search By Rating
+ 
+<p>
+    <img src="/src/Screenshots/SearchByRating.JPG"  />
+</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<hr/>
 
-### Deployment
+When no matching Records exist for search criteria
+ 
+<p>
+    <img src="/src/Screenshots/NoMatchingRecord.JPG"  />
+</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<hr/>
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
