@@ -2,24 +2,25 @@ import Table from "./Table";
 import TopBar from "./TopBar";
 import { useEffect, useState } from "react";
 import DeleteConfirmationModal from "./DeleteConfirmationModal";
-import { API_BASE_URL} from "./config/config"
+import { API_BASE_URL} from "./config/config.js"
 
 export default function MainPage() {  
   const [dvds, setDvds] = useState([]);
   const [openModal, setOpenModal] = useState(false);
-  // const [confirmDelete,setConfirmDelete]=useState(false);
+  const [searchResultsEmpty,setsearchResultsEmpty]=useState(false);
   const [dvdId, setDvdId] = useState(0);
   useEffect(() => {
     getDvdsData();
   }, []);
 
+  
   async function getDvdsData() {
     const response = await fetch(API_BASE_URL + "/dvds");
     const data = await response.json();
     setDvds(data);
   }
 
-  async function handleDelete(dvdId) {
+  function handleDelete(dvdId) {
     setOpenModal(true);
     setDvdId(dvdId);
   }
@@ -32,8 +33,8 @@ export default function MainPage() {
           setOpenModal={setOpenModal}
         />
       )}
-      <TopBar />
-      <Table dvds={dvds} handleDelete={handleDelete} />
+      <TopBar setDvds={setDvds} setsearchResultsEmpty={setsearchResultsEmpty}/>
+      <Table dvds={dvds} handleDelete={handleDelete} searchResultsEmpty={searchResultsEmpty}/>
     </>
   );
 }

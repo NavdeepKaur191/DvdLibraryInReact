@@ -3,7 +3,8 @@ import Button from "./Button";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import ValidateInputs from "./utils/ValidateInputs";
-import { API_BASE_URL} from "./config/config"
+import { API_BASE_URL} from "./config/config";
+
 export default function CreateDvd() {
   const [dvd, setDvd] = useState({
     title: "",

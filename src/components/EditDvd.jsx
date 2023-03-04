@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "./Button";
 import ValidateInputs from "./utils/ValidateInputs";
-import { API_BASE_URL} from "./config/config"
+import { API_BASE_URL} from "./config/config";
 
 export default function EditDvd() {
   const { dvdId } = useParams();
