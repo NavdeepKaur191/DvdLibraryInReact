@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "./Button";
 import ValidateInputs from "./utils/ValidateInputs";
-import { API_BASE_URL} from "./config/config";
+import { API_BASE_URL } from "./config/config";
 
 export default function EditDvd() {
   const { dvdId } = useParams();
@@ -36,7 +36,7 @@ export default function EditDvd() {
 
   async function editDvd(e) {
     e.preventDefault();
-    const errorMessages=ValidateInputs(dvd);  
+    const errorMessages = ValidateInputs(dvd);
     if (Object.keys(errorMessages).length === 0) {
       // submit the form data
       await fetch(API_BASE_URL + "/dvd/" + dvdId, {
@@ -52,7 +52,6 @@ export default function EditDvd() {
       setErrors(errorMessages);
       console.log(errors);
     }
-    
   }
   return (
     <>
@@ -62,15 +61,17 @@ export default function EditDvd() {
         </h1>
         <hr />
         {Object.keys(errors).length > 0 && (
-        <div          
-          className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-2"
-          role="alert"
-        >
-          {Object.values(errors).map((errorMessage) => (
-            <div key={errorMessage}><strong> {errorMessage}</strong></div>
-          ))}
-        </div>
-      )}
+          <div
+            className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-2"
+            role="alert"
+          >
+            {Object.values(errors).map((errorMessage) => (
+              <div key={errorMessage}>
+                <strong> {errorMessage}</strong>
+              </div>
+            ))}
+          </div>
+        )}
         <form
           className="w-full max-w-xl mt-4 text-lg"
           onSubmit={(e) => editDvd(e)}
@@ -106,7 +107,7 @@ export default function EditDvd() {
                 name="releaseYear"
                 value={dvd.releaseYear}
                 onChange={handleChange}
-                type="text"                
+                type="text"
               />
             </div>
           </div>
@@ -124,7 +125,7 @@ export default function EditDvd() {
                 name="director"
                 value={dvd.director}
                 type="text"
-                onChange={handleChange}                
+                onChange={handleChange}
               />
             </div>
           </div>

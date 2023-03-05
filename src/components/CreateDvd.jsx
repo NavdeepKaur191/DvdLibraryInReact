@@ -3,7 +3,7 @@ import Button from "./Button";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import ValidateInputs from "./utils/ValidateInputs";
-import { API_BASE_URL} from "./config/config";
+import { API_BASE_URL } from "./config/config";
 
 export default function CreateDvd() {
   const [dvd, setDvd] = useState({
@@ -33,10 +33,10 @@ export default function CreateDvd() {
     //     [name]: type === "checkbox" ? checked : value
     // }))
   }
-  
+
   async function handleCreateDvd(event) {
-    event.preventDefault(); 
-    const errorMessages=ValidateInputs(dvd);  
+    event.preventDefault();
+    const errorMessages = ValidateInputs(dvd);
     if (Object.keys(errorMessages).length === 0) {
       // submit the form data
       await fetch(API_BASE_URL + "/dvd", {
@@ -55,14 +55,16 @@ export default function CreateDvd() {
   return (
     <div className="p-8">
       <h1 className="text-2xl mb-4 font-bold text-green-700">Create Dvd</h1>
-      <hr />     
+      <hr />
       {Object.keys(errors).length > 0 && (
-        <div          
+        <div
           className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-2"
           role="alert"
         >
           {Object.values(errors).map((errorMessage) => (
-            <div key={errorMessage}><strong> {errorMessage}</strong></div>
+            <div key={errorMessage}>
+              <strong> {errorMessage}</strong>
+            </div>
           ))}
         </div>
       )}

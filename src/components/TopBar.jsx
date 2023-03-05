@@ -3,29 +3,26 @@ import { Link } from "react-router-dom";
 import getSearchUrl from "./utils/getSearchUrl.js";
 import { useState } from "react";
 
-export default function TopBar({setDvds,setsearchResultsEmpty}) { 
-  const [searchDetails,setSearchDetails]=useState({
-    searchBy:'',
-    searchTerm:''
-  }); 
+export default function TopBar({ setDvds, setsearchResultsEmpty }) {
+  const [searchDetails, setSearchDetails] = useState({
+    searchBy: "",
+    searchTerm: "",
+  });
   // useEffect(()=>{
   //   getSearchResult();
   //   },[]);
-    
-    async function getSearchResult() {
-      const searchUrl=getSearchUrl(searchDetails);
-        const response = await fetch(searchUrl);
-        const data = await response.json();
-        if(data.length > 0)
-        {
-          setDvds(data);
-        }
-        else{
-          setDvds([]);
-          setsearchResultsEmpty(true);
-        }
-        
-      }
+
+  async function getSearchResult() {
+    const searchUrl = getSearchUrl(searchDetails);
+    const response = await fetch(searchUrl);
+    const data = await response.json();
+    if (data.length > 0) {
+      setDvds(data);
+    } else {
+      setDvds([]);
+      setsearchResultsEmpty(true);
+    }
+  }
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -34,12 +31,10 @@ export default function TopBar({setDvds,setsearchResultsEmpty}) {
       [name]: value,
     }));
   }
-  function handleSearch(e)
-  {
-    e.preventDefault(); 
-    getSearchResult();       
+  function handleSearch(e) {
+    e.preventDefault();
+    getSearchResult();
   }
-
 
   return (
     <div className="grid grid-rows-1 grid-flow-col gap-2 p-2 mt-4">
@@ -62,9 +57,7 @@ export default function TopBar({setDvds,setsearchResultsEmpty}) {
               onChange={handleChange}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
-              <option value="">
-                Search Category
-              </option>
+              <option value="">Search Category</option>
               <option value="title">Title</option>
               <option value="releaseYear">Release Year</option>
               <option value="directorName">Director Name</option>

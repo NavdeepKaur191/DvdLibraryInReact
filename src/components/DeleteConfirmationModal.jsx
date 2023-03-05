@@ -1,11 +1,11 @@
 import React from "react";
-import { API_BASE_URL} from "./config/config";
+import { API_BASE_URL } from "./config/config";
 
 export default function DeleteConfirmationModal({
   setOpenModal,
   dvdId,
   getDvdsData,
-}) {  
+}) {
   async function deleteDvd() {
     await fetch(API_BASE_URL + "/dvd/" + dvdId, {
       method: "DELETE",
