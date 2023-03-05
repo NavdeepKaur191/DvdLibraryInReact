@@ -1,3 +1,5 @@
+import isFourDigitNumber from "./isFourDigitNumber";
+
 export default function ValidateInputs(dvd) {
   
     const validationErrors = {};
@@ -6,7 +8,7 @@ export default function ValidateInputs(dvd) {
       return validationErrors; 
     }
 
-    if (dvd.releaseYear.trim() === "" || dvd.releaseYear.length !== 4) {     
+    if (isFourDigitNumber(dvd.releaseYear) && dvd.releaseYear === "" || dvd.releaseYear.length !== 4) {     
       validationErrors.releaseYear="Please enter a 4-digit year"; 
       return validationErrors;     
     }
